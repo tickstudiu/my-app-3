@@ -34,12 +34,42 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+	// https://i18n.nuxtjs.org/
+	'@nuxtjs/i18n',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: process.env.API_BASE_URL,
+  },
+
+  // I18n module configuration: https://i18n.nuxtjs.org/basic-usage
+  i18n: {
+    locales: [
+		{
+			code: 'en',
+			iso: 'en',
+			name: 'EN',
+			file: 'en.json',
+		},
+	],
+	defaultLocale: 'en',
+	strategy: 'prefix',
+	lazy: true,
+	langDir: 'locales/',
+	// Set SEO in layouts instead for performance
+	// https://i18n.nuxtjs.org/seo/
+	seo: false,
+	baseUrl: process.env.APP_BASE_URL,
+
+	// nuxt-i18n having trouble when trying to redirect user to correct language
+	// when using 'prefix' strategy
+	// These 2 options are workaround to make it work
+	// https://github.com/nuxt-community/nuxt-i18n/issues/491
+	// https://github.com/nuxt-community/nuxt-i18n/issues/677
+	rootRedirect: 'en',
+	detectBrowserLanguage: false,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

@@ -1,5 +1,8 @@
 <template>
-  <Tutorial />
+  <div>
+	<Tutorial />
+	{{ $t('common.home') }}
+  </div>
 </template>
 
 <script>
