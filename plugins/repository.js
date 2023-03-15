@@ -16,17 +16,18 @@ const createRepositories = (httpClient) => requireRepository.keys().reduce((obj,
 		.pop()
     	// Remove suffix file name to PostRepository
 		.replace(/\.\w+$/, '');
+
 		return {
-    	// Get current data and append new repository into it
-		...obj,
-		[serviceName]: requireRepository(currentFilename).default(httpClient),
-	};
+			// Get current data and append new repository into it
+			...obj,
+			[serviceName]: requireRepository(currentFilename).default(httpClient),
+		};
 }, {});
 
 export default (ctx, inject) => {
-  const { $axios } = ctx;
+  	const { $axios } = ctx;
 
-  $axios.onRequest((config) => {
+  	$axios.onRequest((config) => {
     	// Add param: lang to every requests
     	// set default object first, if the request doesn't have any params
 		config.params = config.params || {};
@@ -36,7 +37,7 @@ export default (ctx, inject) => {
 	});
 
 
-  $axios.onResponseError((error) => {
+  	$axios.onResponseError((error) => {
     	// Bring user to home page
     	// window.location.href = '/';
 

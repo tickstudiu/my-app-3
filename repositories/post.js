@@ -1,22 +1,23 @@
 const resource = '/posts'
+
 export default ($axios) => ({
-  all() {
-    return $axios.get(`${resource}`)
-  },
+  	all() {
+    	return $axios.get(`${resource}`)
+  	},
 
-  show(id) {
-    return $axios.get(`${resource}/${id}`)
-  },
+  	show(postId) {
+    	return $axios.get(`${resource}/${postId}`)
+  	},
 
-  create(payload) {
-    return $axios.post(`${resource}`, payload)
-  },
+	create(payload) {
+		return $axios.post(`${resource}`, payload)
+	},
 
-  update(id, payload) {
-    return $axios.post(`${resource}/${id}`, payload)
-  },
+	update(id, payload) {
+		return $axios.post(`${resource}/${id}`, payload)
+	},
 
-  delete(id) {
-    return $axios.delete(`${resource}/${id}`)
-  }
+	delete(id) {
+		return $axios.delete(`${resource}/${id}`)
+	}
 })
